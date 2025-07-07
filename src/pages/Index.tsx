@@ -7,6 +7,8 @@ import WeatherIndicators from '../components/WeatherIndicators';
 import WeatherChart from '../components/WeatherChart';
 import WeatherTable from '../components/WeatherTable';
 import AdditionalInfo from '../components/AdditionalInfo';
+import IndicatorUI from '../components/IndicatorUI';
+import { Grid } from '@mui/material';
 
 const Index = () => {
   const {
@@ -63,6 +65,30 @@ const Index = () => {
     <div className="min-h-screen p-6 max-w-7xl mx-auto">
       <Header onRefresh={refreshData} isLoading={loading} />
       
+      <Grid>
+             {/* Indicadores */}
+             <Grid container size={{ xs: 12, md: 9 }} gap={2}>
+
+                 <Grid size={{ xs: 12, md: 3 }}>
+                     <IndicatorUI title='Temperatura (2m)' description='XX°C' />
+                 </Grid>
+
+                 <Grid size={{ xs: 12, md: 3 }}>
+                     <IndicatorUI title='Temperatura aparente' description='YY°C' />
+                 </Grid>
+
+                 <Grid size={{ xs: 12, md: 3 }}>
+                     <IndicatorUI title='Velocidad del viento' description='ZZkm/h' />
+                 </Grid>
+
+                 <Grid size={{ xs: 12, md: 3 }}>
+                     <IndicatorUI title='Humedad relativa' description='NN%' />
+                 </Grid>
+
+             </Grid>
+
+         </Grid>
+
       <AlertSection alerts={alerts} />
       
       <LocationSelector
