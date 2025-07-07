@@ -1,6 +1,8 @@
-
 import { MapPin } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
 import { WeatherLocation } from '../types/weather';
 
 interface LocationSelectorProps {
@@ -17,33 +19,59 @@ const LocationSelector = ({ selectedLocation, availableLocations, onLocationChan
           <MapPin className="h-5 w-5 text-blue-400" />
         </div>
         <div className="flex-1">
-          <label className="text-sm font-medium text-slate-300 block mb-2">
-            Seleccionar Ubicación
-          </label>
-          <Select
-            value={selectedLocation.name}
-            onValueChange={(value) => {
-              const location = availableLocations.find(loc => loc.name === value);
-              if (location) {
-                onLocationChange(location);
-              }
-            }}
-          >
-            <SelectTrigger className="bg-slate-800/50 border-slate-600 text-white">
-              <SelectValue placeholder="Selecciona una ciudad" />
-            </SelectTrigger>
-            <SelectContent className="bg-slate-800 border-slate-600">
+          <FormControl fullWidth className="text-sm font-medium text-slate-300 block mb-2">
+            <InputLabel id="location-select-label" sx={{ color: 'white' }}>Seleccionar Ubicación</InputLabel>
+            <Select
+              labelId="location-select-label"
+              id="location-select"
+              value={selectedLocation.name}
+              label="Seleccionar Ubicación"
+              onChange={(event) => {
+                const value = event.target.value as string;
+                const location = availableLocations.find(loc => loc.name === value);
+                if (location) {
+                  onLocationChange(location);
+                }
+              }}
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    backgroundColor: 'rgb(30, 41, 59)', // Un gris oscuro similar al slate-800
+                    border: '1px solid rgb(71 85 105)', // Borde similar al slate-600
+                  },
+                },
+              }}
+              sx={{
+                backgroundColor: 'rgba(30, 41, 59, 0.5)', // bg-slate-800/50
+                borderColor: 'rgb(71 85 105)', // border-slate-600
+                color: 'white',
+                '.MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgb(71 85 105)',
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'rgb(71 85 105)',
+                },
+                '.MuiSvgIcon-root': {
+                  color: 'white',
+                },
+              }}
+            >
               {availableLocations.map((location) => (
-                <SelectItem
+                <MenuItem
                   key={location.name}
                   value={location.name}
-                  className="text-white hover:bg-slate-700"
+                  sx={{
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: 'rgb(51 65 85)', // hover:bg-slate-700
+                    },
+                  }}
                 >
                   {location.name}, {location.country}
-                </SelectItem>
+                </MenuItem>
               ))}
-            </SelectContent>
-          </Select>
+            </Select>
+          </FormControl>
         </div>
       </div>
     </div>

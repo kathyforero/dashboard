@@ -1,6 +1,12 @@
-
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 import { DailyWeather } from '../types/weather';
 
 interface WeatherTableProps {
@@ -51,48 +57,73 @@ const WeatherTable = ({ dailyData }: WeatherTableProps) => {
   }));
 
   return (
-    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in">
-      <CardHeader>
-        <CardTitle className="text-xl font-bold text-white flex items-center space-x-2">
-          <span>📅</span>
-          <span>Pronóstico Semanal</span>
-        </CardTitle>
-      </CardHeader>
+    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in"
+      sx={{
+        backgroundColor: 'rgba(15, 23, 42, 0.7)',
+        boxShadow: 'none',
+        color: 'white',
+      }}
+    >
+      <CardHeader
+        title={
+          <Typography variant="h6" className="text-xl font-bold text-white flex items-center space-x-2"
+            sx={{ pl: 2 }}
+          >
+            <span>📅</span>
+            <span>Pronóstico Semanal</span>
+          </Typography>
+        }
+        sx={{
+          borderBottom: '1px solid rgb(51 65 85)',
+          paddingBottom: '16px',
+        }}
+      />
       <CardContent>
         <div className="overflow-x-auto">
-          <Table>
-            <TableHeader>
-              <TableRow className="border-slate-600 hover:bg-slate-800/50">
-                <TableHead className="text-slate-300 font-semibold">Fecha</TableHead>
-                <TableHead className="text-slate-300 font-semibold">Temp. Máx.</TableHead>
-                <TableHead className="text-slate-300 font-semibold">Temp. Mín.</TableHead>
-                <TableHead className="text-slate-300 font-semibold">Condiciones</TableHead>
-                <TableHead className="text-slate-300 font-semibold">Amanecer</TableHead>
-                <TableHead className="text-slate-300 font-semibold">Atardecer</TableHead>
+          <Table sx={{ minWidth: 650 }}>
+            <TableHead>
+              <TableRow sx={{
+                borderBottom: '1px solid rgb(71 85 105)',
+                '&:hover': {
+                  backgroundColor: 'rgba(30, 41, 59, 0.5)',
+                },
+              }}>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Fecha</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Temp. Máx.</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Temp. Mín.</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Condiciones</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Amanecer</TableCell>
+                <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Atardecer</TableCell>
               </TableRow>
-            </TableHeader>
+            </TableHead>
             <TableBody>
               {tableData.map((row, index) => (
                 <TableRow 
                   key={index}
-                  className="border-slate-700 hover:bg-slate-800/30 transition-colors"
+                  sx={{
+                    borderBottom: '1px solid rgb(71 85 105)',
+                    '&:hover': {
+                      backgroundColor: 'rgba(30, 41, 59, 0.3)',
+                    },
+                    transition: 'background-color 0.15s ease-in-out',
+                  }}
                 >
-                  <TableCell className="text-white font-medium capitalize">
+                  <TableCell sx={{ color: 'white', fontWeight: 'medium', textTransform: 'capitalize' }}>
                     {row.fecha}
                   </TableCell>
-                  <TableCell className="text-red-400 font-semibold">
+                  <TableCell sx={{ color: 'rgb(239 68 68)', fontWeight: 'semibold' }}>
                     {row.tempMax}°C
                   </TableCell>
-                  <TableCell className="text-blue-400 font-semibold">
+                  <TableCell sx={{ color: 'rgb(59 130 246)', fontWeight: 'semibold' }}>
                     {row.tempMin}°C
                   </TableCell>
-                  <TableCell className="text-slate-300">
+                  <TableCell sx={{ color: 'rgb(203 213 225)' }}>
                     {row.descripcion}
                   </TableCell>
-                  <TableCell className="text-yellow-400">
+                  <TableCell sx={{ color: 'rgb(250 204 21)' }}>
                     {row.amanecer}
                   </TableCell>
-                  <TableCell className="text-orange-400">
+                  <TableCell sx={{ color: 'rgb(249 115 22)' }}>
                     {row.atardecer}
                   </TableCell>
                 </TableRow>

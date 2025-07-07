@@ -1,6 +1,8 @@
-
-import { AlertTriangle, Info, AlertCircle } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { WeatherAlert } from '../types/weather';
 
 interface AlertSectionProps {
@@ -12,7 +14,7 @@ const AlertSection = ({ alerts }: AlertSectionProps) => {
     return (
       <div className="glass-effect rounded-lg p-4 mb-6 animate-fade-in">
         <div className="flex items-center space-x-2 text-green-400">
-          <Info className="h-5 w-5" />
+          <InfoOutlinedIcon className="h-5 w-5" />
           <span className="font-medium">Sin alertas activas</span>
         </div>
       </div>
@@ -22,35 +24,50 @@ const AlertSection = ({ alerts }: AlertSectionProps) => {
   const getAlertIcon = (type: string) => {
     switch (type) {
       case 'danger':
-        return <AlertCircle className="h-4 w-4" />;
+        return <ErrorOutlineIcon className="h-5 w-5" />;
       case 'warning':
-        return <AlertTriangle className="h-4 w-4" />;
+        return <WarningAmberOutlinedIcon className="h-5 w-5" />;
       default:
-        return <Info className="h-4 w-4" />;
+        return <InfoOutlinedIcon className="h-5 w-5" />;
     }
   };
 
-  const getAlertClass = (type: string) => {
+  const getAlertSeverity = (type: string) => {
     switch (type) {
       case 'danger':
-        return 'border-red-500/50 bg-red-500/10 text-red-300';
+        return 'error';
       case 'warning':
-        return 'border-yellow-500/50 bg-yellow-500/10 text-yellow-300';
+        return 'warning';
       default:
-        return 'border-blue-500/50 bg-blue-500/10 text-blue-300';
+        return 'info';
     }
   };
 
   return (
     <div className="space-y-3 mb-6 animate-fade-in">
       {alerts.map((alert) => (
-        <Alert key={alert.id} className={`glass-effect ${getAlertClass(alert.type)}`}>
-          {getAlertIcon(alert.type)}
-          <AlertTitle className="font-semibold">{alert.title}</AlertTitle>
-          <AlertDescription className="mt-1">
-            {alert.message}
-          </AlertDescription>
-        </Alert>
+        <div key={alert.id} className={`glass-effect ${getAlertSeverity(alert.type) === 'error' ? 'border-red-500/50 bg-red-500/10 text-red-300' : getAlertSeverity(alert.type) === 'warning' ? 'border-yellow-500/50 bg-yellow-500/10 text-yellow-300' : 'border-blue-500/50 bg-blue-500/10 text-blue-300'}`}>
+          <Alert
+            icon={getAlertIcon(alert.type)}
+            severity={getAlertSeverity(alert.type) as 'error' | 'warning' | 'info'}
+            sx={{
+              backgroundColor: 'transparent',
+              color: 'inherit',
+              border: 'none',
+              '.MuiAlert-icon': {
+                color: 'inherit',
+              },
+              '.MuiAlert-message': {
+                color: 'inherit',
+              },
+            }}
+          >
+            <AlertTitle className="font-semibold">{alert.title}</AlertTitle>
+            <div className="mt-1">
+              {alert.message}
+            </div>
+          </Alert>
+        </div>
       ))}
     </div>
   );

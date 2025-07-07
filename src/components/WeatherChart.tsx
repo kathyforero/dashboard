@@ -1,8 +1,15 @@
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Typography from '@mui/material/Typography';
 import { HourlyWeather, DailyWeather } from '../types/weather';
+import React from 'react';
 
 interface WeatherChartProps {
   hourlyData: HourlyWeather;
@@ -46,32 +53,65 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
     return null;
   };
 
-  return (
-    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in">
-      <CardHeader>
-        <CardTitle className="text-xl font-bold text-white flex items-center space-x-2">
-          <span>📊</span>
-          <span>Análisis Climático</span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Tabs defaultValue="hourly" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 bg-slate-800/50">
-            <TabsTrigger value="hourly" className="data-[state=active]:bg-blue-500/30">
-              Por Horas
-            </TabsTrigger>
-            <TabsTrigger value="daily" className="data-[state=active]:bg-blue-500/30">
-              Por Días
-            </TabsTrigger>
-            <TabsTrigger value="humidity" className="data-[state=active]:bg-blue-500/30">
-              Humedad/Viento
-            </TabsTrigger>
-            <TabsTrigger value="pressure" className="data-[state=active]:bg-blue-500/30">
-              Presión
-            </TabsTrigger>
-          </TabsList>
+  const [value, setValue] = React.useState('hourly');
 
-          <TabsContent value="hourly" className="mt-6">
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in"
+      sx={{
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        color: 'white',
+      }}
+    >
+      <CardHeader
+        title={
+          <Typography variant="h6" className="text-xl font-bold text-white flex items-center space-x-2"
+            sx={{ pl: 2 }}
+          >
+            <span>📊</span>
+            <span>Análisis Climático</span>
+          </Typography>
+        }
+        sx={{
+          borderBottom: '1px solid rgb(51 65 85)',
+          paddingBottom: '16px',
+        }}
+      />
+      <CardContent>
+        <TabContext value={value}>
+          <TabList
+            onChange={handleChange}
+            aria-label="weather charts tabs"
+            variant="fullWidth"
+            sx={{
+              backgroundColor: 'rgb(15, 23, 42)',
+              borderRadius: '0.5rem',
+              '.MuiTabs-indicator': {
+                backgroundColor: 'transparent',
+              },
+              '.MuiTab-root': {
+                color: 'white',
+                '&.Mui-selected': {
+                  backgroundColor: 'rgba(59, 130, 246, 0.3)',
+                  color: 'white',
+                  borderRadius: '0.5rem',
+                },
+                flexGrow: 1,
+                maxWidth: 'unset',
+              },
+            }}
+          >
+            <Tab label="Por Horas" value="hourly" />
+            <Tab label="Por Días" value="daily" />
+            <Tab label="Humedad/Viento" value="humidity" />
+            <Tab label="Presión" value="pressure" />
+          </TabList>
+
+          <TabPanel value="hourly" sx={{ padding: '24px 0 0 0' }}>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={hourlyChartData}>
@@ -94,9 +134,9 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TabPanel>
 
-          <TabsContent value="daily" className="mt-6">
+          <TabPanel value="daily" sx={{ padding: '24px 0 0 0' }}>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={dailyChartData}>
@@ -113,9 +153,9 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TabPanel>
 
-          <TabsContent value="humidity" className="mt-6">
+          <TabPanel value="humidity" sx={{ padding: '24px 0 0 0' }}>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={hourlyChartData}>
@@ -146,9 +186,9 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
+          </TabPanel>
 
-          <TabsContent value="pressure" className="mt-6">
+          <TabPanel value="pressure" sx={{ padding: '24px 0 0 0' }}>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={hourlyChartData}>
@@ -171,8 +211,8 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                 </LineChart>
               </ResponsiveContainer>
             </div>
-          </TabsContent>
-        </Tabs>
+          </TabPanel>
+        </TabContext>
       </CardContent>
     </Card>
   );

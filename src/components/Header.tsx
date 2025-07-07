@@ -1,6 +1,5 @@
-
 import { Cloud, RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@mui/material';
 
 interface HeaderProps {
   onRefresh: () => void;
@@ -27,8 +26,6 @@ const Header = ({ onRefresh, isLoading }: HeaderProps) => {
         <Button
           onClick={onRefresh}
           disabled={isLoading}
-          variant="outline"
-          size="sm"
           className="bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/20 text-blue-300"
         >
           <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
