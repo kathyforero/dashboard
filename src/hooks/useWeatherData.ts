@@ -1,12 +1,17 @@
-
 import { useState, useEffect } from 'react';
 import { WeatherData, WeatherLocation, WeatherAlert } from '../types/weather';
 
 const DEFAULT_LOCATIONS: WeatherLocation[] = [
-  { name: 'Madrid', latitude: 40.4168, longitude: -3.7038, country: 'Spain', timezone: 'Europe/Madrid' },
-  { name: 'Barcelona', latitude: 41.3851, longitude: 2.1734, country: 'Spain', timezone: 'Europe/Madrid' },
-  { name: 'Valencia', latitude: 39.4699, longitude: -0.3763, country: 'Spain', timezone: 'Europe/Madrid' },
-  { name: 'Sevilla', latitude: 37.3891, longitude: -5.9845, country: 'Spain', timezone: 'Europe/Madrid' },
+  { name: 'Quito', latitude: -0.1807, longitude: -78.4678, country: 'Ecuador', timezone: 'America/Guayaquil' },
+  { name: 'Guayaquil', latitude: -2.1700, longitude: -79.9224, country: 'Ecuador', timezone: 'America/Guayaquil' },
+  { name: 'Cuenca', latitude: -2.9001, longitude: -79.0059, country: 'Ecuador', timezone: 'America/Guayaquil' },
+  { name: 'Manta', latitude: -0.9631, longitude: -80.7270, country: 'Ecuador', timezone: 'America/Guayaquil' },
+  { name: 'Ciudad de México', latitude: 19.4326, longitude: -99.1332, country: 'México', timezone: 'America/Mexico_City' },
+  { name: 'Buenos Aires', latitude: -34.6037, longitude: -58.3816, country: 'Argentina', timezone: 'America/Argentina/Buenos_Aires' },
+  { name: 'Bogotá', latitude: 4.7110, longitude: -74.0721, country: 'Colombia', timezone: 'America/Bogota' },
+  { name: 'Santiago', latitude: -33.4489, longitude: -70.6693, country: 'Chile', timezone: 'America/Santiago' },
+  { name: 'Lima', latitude: -12.0464, longitude: -77.0428, country: 'Perú', timezone: 'America/Lima' },
+  { name: 'São Paulo', latitude: -23.5505, longitude: -46.6333, country: 'Brasil', timezone: 'America/Sao_Paulo' },
 ];
 
 export const useWeatherData = () => {

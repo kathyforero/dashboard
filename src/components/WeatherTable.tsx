@@ -50,11 +50,12 @@ const WeatherTable = ({ dailyData }: WeatherTableProps) => {
 
   return (
     <Card 
-      className="bg-card border-slate-700 mb-6 animate-fade-in rounded-2xl"
+      className="bg-card border border-slate-700 mb-6 animate-fade-in rounded-lg"
       sx={{
         boxShadow: 'none',
         color: 'white',
-        backgroundColor: 'hsl(var(--card))'
+        backgroundColor: 'hsl(var(--card))',
+        borderRadius: '0.5rem'
       }}
     >
       <div className="flex items-center gap-2 p-4 text-xl font-bold text-white">

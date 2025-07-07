@@ -12,13 +12,17 @@ interface WeatherChartProps {
 }
 
 const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
-  // Preparar datos para gráficos por horas
-  const hourlyChartData = hourlyData.time.map((time, index) => ({
+  // Obtener índice de la medianoche (00:00) más cercana para mostrar 24 h completas
+  const midnightIndex = hourlyData.time.findIndex(t => new Date(t).getHours() === 0);
+  const start = midnightIndex >= 0 ? midnightIndex : 0;
+  const slice24 = hourlyData.time.slice(start, start + 24);
+
+  const hourlyChartData = slice24.map((time, idx) => ({
     time: new Date(time).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
-    temperatura: hourlyData.temperature[index],
-    humedad: hourlyData.humidity[index],
-    viento: hourlyData.windSpeed[index],
-    presion: hourlyData.pressure[index]
+    temperatura: hourlyData.temperature[start + idx],
+    humedad: hourlyData.humidity[start + idx],
+    viento: hourlyData.windSpeed[start + idx],
+    presion: hourlyData.pressure[start + idx]
   }));
 
   // Preparar datos para gráficos por días
@@ -56,11 +60,12 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
 
   return (
     <Card 
-      className="bg-card border-slate-700 mb-6 animate-fade-in rounded-2xl"
+      className="bg-card border border-slate-700 mb-6 animate-fade-in rounded-lg "
       sx={{
         boxShadow: 'none',
         color: 'white',
-        backgroundColor: 'hsl(var(--card))'
+        backgroundColor: 'hsl(var(--card))',
+        borderRadius: '0.5rem'
       }}
     >
       <div className="flex items-center gap-2 p-4 text-xl font-bold text-white">
@@ -106,6 +111,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                     dataKey="time" 
                     stroke="#94a3b8"
                     fontSize={12}
+                    interval={0}
                   />
                   <YAxis stroke="#94a3b8" fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
@@ -131,6 +137,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                     dataKey="fecha" 
                     stroke="#94a3b8"
                     fontSize={12}
+                    interval={0}
                   />
                   <YAxis stroke="#94a3b8" fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
@@ -150,6 +157,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                     dataKey="time" 
                     stroke="#94a3b8"
                     fontSize={12}
+                    interval={0}
                   />
                   <YAxis stroke="#94a3b8" fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
@@ -183,6 +191,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
                     dataKey="time" 
                     stroke="#94a3b8"
                     fontSize={12}
+                    interval={0}
                   />
                   <YAxis stroke="#94a3b8" fontSize={12} />
                   <Tooltip content={<CustomTooltip />} />
