@@ -80,6 +80,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
               },
               '.MuiTab-root': {
                 color: 'white',
+                textTransform: 'none',
                 '&.Mui-selected': {
                   backgroundColor: 'rgba(59, 130, 246, 0.3)',
                   color: 'white',
