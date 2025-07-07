@@ -13,7 +13,7 @@ interface LocationSelectorProps {
 
 const LocationSelector = ({ selectedLocation, availableLocations, onLocationChange }: LocationSelectorProps) => {
   return (
-    <div className="glass-effect rounded-lg p-4 mb-6 animate-fade-in">
+    <div className="bg-card rounded-lg p-4 mb-6 animate-fade-in border border-slate-700">
       <div className="flex items-center space-x-3">
         <div className="p-2 bg-blue-500/20 rounded-lg">
           <MapPin className="h-5 w-5 text-blue-400" />

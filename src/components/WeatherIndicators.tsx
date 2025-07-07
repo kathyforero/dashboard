@@ -1,4 +1,3 @@
-
 import { Thermometer, Droplets, Wind, Eye, Sun, Gauge } from 'lucide-react';
 import { CurrentWeather } from '../types/weather';
 
@@ -57,7 +56,7 @@ const WeatherIndicators = ({ currentWeather }: WeatherIndicatorsProps) => {
       {indicators.map((indicator, index) => (
         <div
           key={indicator.label}
-          className="glass-effect rounded-lg p-4 animate-fade-in hover:bg-white/10 transition-all duration-300"
+          className="bg-card rounded-lg p-4 animate-fade-in hover:bg-white/10 transition-all duration-300 border border-slate-700"
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <div className="flex items-center space-x-3">

@@ -12,7 +12,7 @@ interface AlertSectionProps {
 const AlertSection = ({ alerts }: AlertSectionProps) => {
   if (alerts.length === 0) {
     return (
-      <div className="glass-effect rounded-lg p-4 mb-6 animate-fade-in">
+      <div className="bg-card rounded-lg p-4 mb-6 animate-fade-in border border-slate-700">
         <div className="flex items-center space-x-2 text-green-400">
           <InfoOutlinedIcon className="h-5 w-5" />
           <span className="font-medium">Sin alertas activas</span>

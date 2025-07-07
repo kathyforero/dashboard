@@ -1,12 +1,4 @@
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { Card, CardContent, CardHeader, Typography, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { DailyWeather } from '../types/weather';
 
 interface WeatherTableProps {
@@ -57,30 +49,27 @@ const WeatherTable = ({ dailyData }: WeatherTableProps) => {
   }));
 
   return (
-    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in"
+    <Card 
+      className="bg-card border-slate-700 mb-6 animate-fade-in rounded-2xl"
       sx={{
-        backgroundColor: 'rgba(15, 23, 42, 0.7)',
         boxShadow: 'none',
         color: 'white',
+        backgroundColor: 'hsl(var(--card))'
       }}
     >
-      <CardHeader
-        title={
-          <Typography variant="h6" className="text-xl font-bold text-white flex items-center space-x-2"
-            sx={{ pl: 2 }}
-          >
-            <span>📅</span>
-            <span>Pronóstico Semanal</span>
-          </Typography>
-        }
-        sx={{
-          borderBottom: '1px solid rgb(51 65 85)',
-          paddingBottom: '16px',
-        }}
-      />
+      <div className="flex items-center gap-2 p-4 text-xl font-bold text-white">
+        📅 Pronóstico Semanal
+      </div>
       <CardContent>
         <div className="overflow-x-auto">
-          <Table sx={{ minWidth: 650 }}>
+          <Table sx={{ 
+            minWidth: 650, 
+            backgroundColor: 'transparent',
+            '& .MuiTableCell-root': {
+              paddingLeft: '10px',
+              paddingRight: '10px'
+            }
+          }}>
             <TableHead>
               <TableRow sx={{
                 borderBottom: '1px solid rgb(71 85 105)',

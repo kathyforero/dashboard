@@ -1,13 +1,8 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardHeader from '@mui/material/CardHeader';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+import { Card, CardContent, CardHeader, Typography, Tabs, Tab } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import Typography from '@mui/material/Typography';
 import { HourlyWeather, DailyWeather } from '../types/weather';
 import React from 'react';
 
@@ -60,27 +55,17 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
   };
 
   return (
-    <Card className="glass-effect border-slate-700 mb-6 animate-fade-in"
+    <Card 
+      className="bg-card border-slate-700 mb-6 animate-fade-in rounded-2xl"
       sx={{
-        backgroundColor: 'transparent',
         boxShadow: 'none',
         color: 'white',
+        backgroundColor: 'hsl(var(--card))'
       }}
     >
-      <CardHeader
-        title={
-          <Typography variant="h6" className="text-xl font-bold text-white flex items-center space-x-2"
-            sx={{ pl: 2 }}
-          >
-            <span>📊</span>
-            <span>Análisis Climático</span>
-          </Typography>
-        }
-        sx={{
-          borderBottom: '1px solid rgb(51 65 85)',
-          paddingBottom: '16px',
-        }}
-      />
+      <div className="flex items-center gap-2 p-4 text-xl font-bold text-white">
+        📊 Análisis Climático
+      </div>
       <CardContent>
         <TabContext value={value}>
           <TabList
@@ -88,7 +73,7 @@ const WeatherChart = ({ hourlyData, dailyData }: WeatherChartProps) => {
             aria-label="weather charts tabs"
             variant="fullWidth"
             sx={{
-              backgroundColor: 'rgb(15, 23, 42)',
+              backgroundColor: 'hsl(var(--card))',
               borderRadius: '0.5rem',
               '.MuiTabs-indicator': {
                 backgroundColor: 'transparent',

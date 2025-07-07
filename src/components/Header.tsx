@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header = ({ onRefresh, isLoading }: HeaderProps) => {
   return (
-    <div className="glass-effect rounded-lg p-6 mb-6 animate-fade-in">
+    <div className="bg-card rounded-lg p-6 mb-6 animate-fade-in border border-slate-700">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="p-3 bg-blue-500/20 rounded-lg">

@@ -1,4 +1,3 @@
-
 import { useWeatherData } from '../hooks/useWeatherData';
 import Header from '../components/Header';
 import AlertSection from '../components/AlertSection';
@@ -34,7 +33,7 @@ const Index = () => {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-4 glass-effect p-8 rounded-lg">
+        <div className="text-center space-y-4 bg-card p-8 rounded-lg border border-slate-700">
           <div className="text-red-400 text-6xl">❌</div>
           <h2 className="text-2xl font-bold text-white">Error al cargar datos</h2>
           <p className="text-slate-300">{error}</p>
