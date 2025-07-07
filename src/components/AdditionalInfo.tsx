@@ -13,14 +13,14 @@ const AdditionalInfo = ({ currentWeather }: AdditionalInfoProps) => {
     if (temp < 10) return 'Abrigo o chaqueta gruesa';
     if (temp < 20) return 'Chaqueta ligera o suéter';
     if (temp < 30) return 'Ropa ligera, camiseta';
-    return 'Ropa muy ligera, protección solar';
+    return 'Ropa muy ligera, protección solar.';
   };
 
   const getDrivingConditions = (visibility: number, windSpeed: number) => {
     if (visibility < 1000) return 'Condiciones de conducción difíciles por baja visibilidad';
     if (windSpeed > 50) return 'Precaución por vientos fuertes';
     if (visibility < 5000) return 'Visibilidad reducida, conduzca con cuidado';
-    return 'Condiciones de conducción normales';
+    return 'Condiciones de conducción normales.';
   };
 
   const getRainProbability = (humidity: number) => {
