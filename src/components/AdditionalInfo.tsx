@@ -1,5 +1,4 @@
-
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { Lightbulb, Umbrella, Shirt, Car } from 'lucide-react';
 import { CurrentWeather } from '../types/weather';
 
@@ -68,36 +67,45 @@ const AdditionalInfo = ({ currentWeather }: AdditionalInfoProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in">
       {recommendations.map((rec, index) => (
-        <Card 
+        <Card
           key={rec.title}
-          className="glass-effect border-slate-700 hover:bg-white/10 transition-all duration-300"
+          className="bg-card border border-slate-700 rounded-lg hover:bg-white/10 transition-all duration-300"
           style={{ animationDelay: `${index * 0.1}s` }}
+          sx={{ boxShadow: 'none', color: 'white', backgroundColor: 'hsl(var(--card))', borderRadius: '0.5rem', display: 'flex', flexDirection: 'column', gap: 1 }}
         >
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg font-bold text-white flex items-center space-x-3">
-              <div className={`p-2 ${rec.bgColor} rounded-lg`}>
-                <rec.icon className={`h-5 w-5 ${rec.color}`} />
-              </div>
-              <span>{rec.title}</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+          <CardHeader 
+            sx={{ p: 2, pb: 1 }}
+            title={
+              <Typography variant="subtitle1" className="text-base font-extrabold text-white flex items-center space-x-3" sx={{ fontWeight: 700 }}>
+                <div className={`p-2 ${rec.bgColor} rounded-lg`}>
+                  <rec.icon className={`h-5 w-5 ${rec.color}`} />
+                </div>
+                <span>{rec.title}</span>
+              </Typography>
+            }
+          />
+          <CardContent sx={{ pt: 1, pb: 2, px: 3 }}>
             <p className="text-slate-300 leading-relaxed">{rec.content}</p>
           </CardContent>
         </Card>
       ))}
       
       {/* Información adicional del clima actual */}
-      <Card className="glass-effect border-slate-700 md:col-span-2">
-        <CardHeader>
-          <CardTitle className="text-lg font-bold text-white flex items-center space-x-3">
-            <span>🌡️</span>
-            <span>Resumen del Clima Actual</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+      <Card 
+        className="bg-card border border-slate-700 rounded-lg md:col-span-2"
+        sx={{ boxShadow: 'none', color: 'white', backgroundColor: 'hsl(var(--card))', borderRadius: '0.5rem', display: 'flex', flexDirection: 'column', gap: 1 }}
+      >
+        <CardHeader sx={{ p: 2, pb: 1 }}
+          title={
+            <Typography variant="subtitle1" className="text-base font-extrabold text-white flex items-center space-x-3" sx={{ fontWeight: 700 }}>
+              <span>🌡️</span>
+              <span>Resumen del Clima Actual</span>
+            </Typography>
+          }
+        />
+        <CardContent sx={{ pt: 1, pb: 2, px: 3 }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="text-center p-3 bg-slate-800/30 rounded-lg">
               <p className="text-slate-400">Estado del Día</p>

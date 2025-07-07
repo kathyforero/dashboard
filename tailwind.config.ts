@@ -1,5 +1,5 @@
-
 import type { Config } from "tailwindcss";
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -127,7 +127,13 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in': 'slide-in 0.4s ease-out'
-			}
+			},
+			fontFamily: {
+				sans: [
+					'Inter',
+					...fontFamily.sans,
+				],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
