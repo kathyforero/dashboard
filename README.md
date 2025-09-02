@@ -1,73 +1,43 @@
-# Welcome to your Lovable project
+# Resumen del Proyecto: Dashboard del Clima
 
-## Project info
+## Descripción General
 
-**URL**: https://lovable.dev/projects/412b9a90-c97b-4755-b18e-42bf99eb39c5
+Este es un **Dashboard del Clima** (Weather Dashboard) desarrollado como una aplicación web moderna que proporciona información meteorológica en tiempo real para múltiples ciudades de América Latina. [1](#0-0) 
 
-## How can I edit this code?
+## Características Principales
 
-There are several ways of editing your application.
+La aplicación ofrece las siguientes funcionalidades:
 
-**Use Lovable**
+- **Datos meteorológicos en tiempo real**: Muestra temperatura actual, humedad, velocidad del viento, presión atmosférica, visibilidad e índice UV [2](#0-1) 
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/412b9a90-c97b-4755-b18e-42bf99eb39c5) and start prompting.
+- **Pronóstico por horas y días**: Incluye datos meteorológicos por horas (24 horas) y pronóstico diario (7 días) [3](#0-2) 
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Selector de ubicaciones**: Permite consultar el clima de 10 ciudades principales de América Latina incluyendo Quito, Guayaquil, Ciudad de México, Buenos Aires, Bogotá, Santiago, Lima, São Paulo, entre otras [4](#0-3) 
 
-**Use your preferred IDE**
+- **Sistema de alertas inteligentes**: Genera alertas automáticas por condiciones climáticas extremas como temperaturas altas/bajas, vientos fuertes e índice UV elevado [5](#0-4) 
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Visualización de datos**: Incluye gráficos interactivos, tablas de datos y indicadores visuales para una mejor comprensión de la información climática [6](#0-5) 
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tecnologías Utilizadas
 
-Follow these steps:
+El proyecto está construido con un stack tecnológico moderno:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Frontend Framework**: React 18 con TypeScript [7](#0-6) 
+- **Build Tool**: Vite para desarrollo y construcción optimizada [8](#0-7) 
+- **UI Components**: shadcn-ui y Radix UI para componentes accesibles [9](#0-8) 
+- **Styling**: Tailwind CSS para estilos utilitarios [10](#0-9) 
+- **Data Visualization**: Recharts para gráficos y Material-UI para componentes adicionales [11](#0-10) 
+- **State Management**: TanStack React Query para manejo de estado del servidor [12](#0-11) 
+- **Routing**: React Router Dom para navegación [13](#0-12) 
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Fuente de Datos
 
-# Step 3: Install the necessary dependencies.
-npm i
+La aplicación consume datos de la API gratuita de Open-Meteo, proporcionando información meteorológica precisa y actualizada [14](#0-13) 
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Despliegue
 
-**Edit a file directly in GitHub**
+El proyecto está configurado para despliegue en GitHub Pages y tiene capacidades PWA (Progressive Web App) para una experiencia similar a aplicaciones nativas [15](#0-14) [16](#0-15) 
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Notes**
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/412b9a90-c97b-4755-b18e-42bf99eb39c5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Este dashboard está especialmente diseñado para usuarios de habla hispana, con interfaz en español y enfoque en ciudades de América Latina. La aplicación maneja estados de carga, errores y proporciona una experiencia de usuario completa con notificaciones y actualizaciones en tiempo real.
